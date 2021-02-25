@@ -12,6 +12,8 @@ The last layer has 10 neurons because each category of clothing is assigned to o
 
 ## In the past example we used the optimizer and loss function, while in this one we are using the function adam in the optimizer argument and sparse_categorical- crossentropy for the loss argument. How do the optimizer and loss functions operate to produce model parameters (estimates) within the `model.compile()` function?
 
+The optimizer chooses values to pass to each neuron based on the result of the loss function. The loss function in turn calculates how off a models guess was, which then influences the optimizer.
+
 ## Using the mnist drawings dataset (the dataset with the hand written numbers with corresponding labels) answer the following questions
 
 ### 1. What is the shape of the images training set (how many and the dimension of each)?
