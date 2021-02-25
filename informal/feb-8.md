@@ -26,5 +26,5 @@ There are 10,000 images in the test set, each with a size of 28x28.
 
 ### 6. Produce a plot of your selected image and the accompanying histogram that illustrates the probability of that image being the selected number
 
-![Histogram](/static/images/appml/feb8_hist.png)
-![Plot](/static/images/appml/feb8_plot.png)
+![Histogram](https://github.com/pasolano/appml/blob/main/data/feb8-hist.png?raw=true)
+![Plot](https://github.com/pasolano/appml/blob/main/data/feb8-plot.png?raw=true)
