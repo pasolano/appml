@@ -52,6 +52,7 @@ def plot_image(image):
 
 # get image
 img = misc.ascent()
+print(type(img))
 
 # define filters
 # 9 numbers that add to 0
