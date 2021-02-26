@@ -38,16 +38,13 @@ The application of a convolving filter to an image is useful for computer vision
 
 ## Another useful method is pooling. Apply a 2x2 filter to one of your convolved images, and plot the result. In effect what have you accomplished by applying this filter? Does there seem to be a logic (i.e. maximizing, averaging or minimizing values?) associated with the pooling filter provided in the example exercise (convolutions & pooling)? Did the resulting image increase in size or decrease? Why would this method be useful? Stretch goal: again, instead of using `misc.ascent()`, apply the pooling filter to one of your transformed images
 
-The original image:
-
+The original image: </br>
 ![Ascent](https://github.com/pasolano/appml/blob/main/data/feb-17/ascent.png?raw=true)
 
-The convolution:
-
+The convolution: </br>
 ![Convolution 1](https://github.com/pasolano/appml/blob/main/data/feb-17/feb-17-conv-1.png?raw=true)
 
-The pooling:
-
+The pooling: </br>
 ![Pooling](https://github.com/pasolano/appml/blob/main/data/feb-17/pool.png?raw=true)
 
 By applying this filter, I have basically lowered the resolution of the image while attempting to lose as little important information from the image as possible. The way the pooling algorithm does this is it looks at a grid of 4 pixels, chooses the largest value, and has that value represent those 4 pixels as one pixel in the transformed image.
