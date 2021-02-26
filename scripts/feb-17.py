@@ -40,7 +40,8 @@ def pool(img):
             pixels.append(img[x+1, y])
             pixels.append(img[x, y+1])
             pixels.append(img[x+1, y+1])
-            newImage[int(x/2),int(y/2)] = pixels[len(pixels)-1]
+            pixels.sort(reverse=True)
+            newImage[int(x/2),int(y/2)] = pixels[0]
     return newImage
 
 def plot_image(image):
