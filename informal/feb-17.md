@@ -3,6 +3,7 @@
 ## Last time you did an exercise (convolutions and pooling) where you manually applied a 3x3 array as a filter to an image of two people ascending an outdoor staircase. Modify the existing filter and if needed the associated weight in order to apply your new filters to the image 3 times. Plot each result, upload them to your response, and describe how each filter transformed the existing image as it convolved through the original array and reduced the object size. What are you functionally accomplishing as you apply the filter to your original array (see the following snippet for reference)? Why is the application of a convolving filter to an image useful for computer vision? Stretch goal: instead of using the `misc.ascent()` image from `scipy`, can you apply three filters and weights to your own selected image? Again describe the results
 
 For reference, I am including the source image (ascent from `scipy`) below:
+
 ![Ascent](https://github.com/pasolano/appml/blob/main/data/feb-17/ascent.png?raw=true)
 
 Some of my convolutions filtered the given images in similar ways, but all of the resulting images are unique in some way.
@@ -38,12 +39,15 @@ The application of a convolving filter to an image is useful for computer vision
 ## Another useful method is pooling. Apply a 2x2 filter to one of your convolved images, and plot the result. In effect what have you accomplished by applying this filter? Does there seem to be a logic (i.e. maximizing, averaging or minimizing values?) associated with the pooling filter provided in the example exercise (convolutions & pooling)? Did the resulting image increase in size or decrease? Why would this method be useful? Stretch goal: again, instead of using `misc.ascent()`, apply the pooling filter to one of your transformed images
 
 The original image:
+
 ![Ascent](https://github.com/pasolano/appml/blob/main/data/feb-17/ascent.png?raw=true)
 
 The convolution:
+
 ![Convolution 1](https://github.com/pasolano/appml/blob/main/data/feb-17/feb-17-conv-1.png?raw=true)
 
 The pooling:
+
 ![Pooling](https://github.com/pasolano/appml/blob/main/data/feb-17/pool.png?raw=true)
 
 By applying this filter, I have basically lowered the resolution of the image while attempting to lose as little important information from the image as possible. The way the pooling algorithm does this is it looks at a grid of 4 pixels, chooses the largest value, and has that value represent those 4 pixels as one pixel in the transformed image.
