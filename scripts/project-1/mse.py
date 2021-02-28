@@ -2,8 +2,9 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import pandas as pd
-import collections
 from scipy import stats
+from sklearn.preprocessing import StandardScaler
+
 
 def mse(xs, ys):
   summation = 0  #variable to store the summation of differences
@@ -13,10 +14,10 @@ def mse(xs, ys):
     squared_difference = difference**2  #taking square of the differene
     summation = summation + squared_difference  #taking a sum of all the differences
   mse = summation/n  #dividing summation by total values to obtain average
-  print ("The Mean Squared Error is: ", mse)
+  print ("The Mean Squared Error is: ", mse[0])
 
 # import data
-df = pd.read_csv('out.csv')
+df = pd.read_csv('../../data/project-1/austin.csv')
 
 # cast columns
 df['prices'] = pd.to_numeric(df['prices'])
@@ -25,9 +26,7 @@ df['baths'] = pd.to_numeric(df['baths'])
 df['sqft'] = pd.to_numeric(df['sqft'])
 
 # standardize data
-df['prices'] = df['prices']/100000
-df['sqft'] = df['sqft']/1000
-
+ss = StandardScaler()
 # train model
 model = keras.Sequential([keras.layers.Dense(units=1, input_shape=[3])])
 model.compile(optimizer = 'sgd', loss='mean_squared_error')
@@ -35,42 +34,71 @@ model.compile(optimizer = 'sgd', loss='mean_squared_error')
 x_cols = ['no_beds', 'baths', 'sqft']
 
 xs = np.stack([np.array(df[name], dtype=float) for name in x_cols], axis=1)
-ys = np.array(df['prices'], dtype=float)
+ys = np.array(df['prices'], dtype=float).reshape(-1, 1)
 
-model.fit(xs, ys, epochs=1000)
+xss = ss.fit_transform(xs)
+yss = ss.fit_transform(ys)
+
+model.fit(xss, yss, epochs=1000)
 
 # get predictions
-predictions = model.predict(xs)
+preds = model.predict(xss).reshape(1,-1)[0]
+preds = ss.inverse_transform(preds)
 
-diffs = {}
+# calculate difference
+x = np.array(df['prices'])
+# y = ss.inverse_transform(preds)
+diff = preds - x
 
-for index, value in df.iterrows():
-  diff = predictions[index][0] - value['prices']
-  diffs[diff] = [value['prices'], predictions[index][0]]
-  
-od = collections.OrderedDict(sorted(diffs.items()))
+# convert to dictionary { diff : index }
+diff_dict = {}
+for i in range(0, len(diff)):
+  diff_dict[diff[i]] = i
+
+# sort differences
+diff_sort = sorted(list(diff_dict.keys()))
 
 # 10 biggest over-predictions
-over_pred = list(reversed(od))[0:10]
-over_real = [diffs[i][0] for i in over_pred]
-mse(over_real, over_pred)
+diff_rev = sorted(diff_sort, reverse=True)
+over_diff = diff_rev[:10]
+over_preds = [preds[diff_dict[i]] for i in over_diff]
+over_real = [ys[diff_dict[i]] for i in over_diff]
+mse(over_preds, over_real)
 
 # print 10 biggest under-predictions
-under_pred = list(od.keys())[0:10]
-under_real = [diffs[i][0] for i in under_pred]
-mse(under_real, under_pred)
+under_diff = diff_sort[:10]
+under_preds = [preds[diff_dict[i]] for i in under_diff]
+under_real = [ys[diff_dict[i]] for i in under_diff]
+mse(under_preds, under_real)
 
-# calculate difference between prediction and price (abs)
-diffs = {}
-for index, value in df.iterrows():
-  diff = abs(predictions[index][0] - value['prices'])
-  diffs[diff] = [value['prices'], predictions[index][0]]
+# 10 closest predictions
+diff_abs = np.copy(diff)
+diff_abs = np.abs(diff_abs)
+diff_abs_dict = {}
+for i in range(0, len(diff_abs)):
+  diff_abs_dict[diff_abs[i]] = i
 
-od = collections.OrderedDict(sorted(diffs.items()))
+# sort differences
+diff_abs_sort = sorted(list(diff_abs_dict.keys()))
 
-close_pred = list(od.keys())[0:10]
-close_real = [diffs[i][0] for i in close_pred]
-mse(close_real, close_pred)
+close_diff = diff_abs_sort[:10]
+close_preds = [preds[diff_abs_dict[i]] for i in close_diff]
+close_real = [ys[diff_abs_dict[i]] for i in close_diff]
+mse(close_preds, close_real)
 
 # quartiles
-print([stats.percentileofscore(predictions, pred) for pred in close_pred])
+print([stats.percentileofscore(preds, pred) for pred in close_preds])
+
+# count number of over vs under predicted values
+over = 0
+under = 0
+for i in diff:
+  if i > 0:
+    over += 1
+  else:
+    under += 1
+print("Over-predicted", over, "times")
+print("Under-predicted", under, "times")
+
+# get weights of model
+print(model.weights)
