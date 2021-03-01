@@ -18,14 +18,22 @@
   Applying more than one filter could be helpful when trying to find more than one identifying characteristic in an image, since it is likely one filter would not be able to highlight two distinct characteristics. I did not use any filters while doing training my model for the mnist dataset, but it did not need them because the numbers are similar enough to each other without needing any features highlighted.
 
 - MSE: From your 400+ observations of homes for sale, calculate the MSE for the following.
-  - The 10 biggest over-predictions </br>
+  - The 10 biggest over-predictions
+
   `The Mean Squared Error is:  2684870383784.711`
-  - The 10 biggest under-predictions </br>
+
+  - The 10 biggest under-predictions
+
   `The Mean Squared Error is:  15852507295248.031`
-  - The 10 most accurate results (use absolute value) </br>
+
+  - The 10 most accurate results (use absolute value)
+
   `The Mean Squared Error is:  49274359.067871094`
-  - In which percentile do the 10 most accurate predictions reside? Did your model trend towards over or under predicting home values? </br>
+
+  - In which percentile do the 10 most accurate predictions reside? Did your model trend towards over or under predicting home values?
+
   `[38.51508120649652, 39.675174013921115, 47.56380510440835, 32.25058004640371, 44.54756380510441, 62.41299303944316, 35.96287703016241, 35.03480278422274, 32.01856148491879, 57.30858468677494]`
+
   These are the percentiles of the closest matching predictions, in order from closest to least close.
 
   ```
@@ -34,8 +42,10 @@
   ```
 
   This model tends to over-predict about as often as it under-predicts, but slightly trends toward under-predicting.
-  - Which feature appears to be the most significant predictor in the above cases? </br>
-  `[-0.21271023], [ 0.55587214], [ 0.41551423]` </br>
+  - Which feature appears to be the most significant predictor in the above cases?
+
+  `[-0.21271023], [ 0.55587214], [ 0.41551423]`
+  
   These are the weights of the model (corresponding to number of beds, number of bathrooms, and square footage). Since the weight for number of bathrooms is the largest, it tends to be the most significant feature for predictions.
   
   - Stretch goal: calculate the MAE and compare with your MSE results
