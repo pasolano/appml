@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import dataframe_image as dfi
 
 pd.set_option('display.float_format', lambda x: '%.5f' % x)
 
@@ -7,7 +8,7 @@ filename = "../../data/project-1/austin.csv"
 
 df = pd.read_csv(filename)
 
-print(df.describe().to_markdown(tablefmt="grid"))
+dfi.export(df.describe(), './describe.png', table_conversion='matplotlib')
 
 # print(df.describe().apply(lambda s: s.apply(lambda x: format(x, 'g'))))
 

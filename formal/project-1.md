@@ -4,22 +4,4 @@
 
 In order to collect data to train my housing model, I used a Python script to scrape Zillow. This proved to be more challenging than I initially assumed. I began scraping the data from their site after they had already changed their site structure, so I had to change how the script manipulated the HTML it received. I also found that the script was unable to handle lots of different edge cases, including empty lots, houses with over 9 bathrooms or bedrooms, and listings that were missing the price, number of bedrooms, bathrooms, or square footage. I also ended up significantly refactoring my script to make it much shorter and readable, which also conveniently fixed an issue where clusters of numbers were getting repeated in my features columns. After trying a number of different cities and manually cleaning the data by removing incomplete listings and the double-digit issue I mentioned earlier, I ended up with 431 complete listings, each with a price, address, number of bedrooms, number of bathrooms, and square footage. All of the houses are located in Austin, Texas, which has far fewer mansions for sale than Los Angeles, which not only made the data set easier to clean, but also means that zipcode is not as significant of a variable as it is in the home of Beverly Hills. To conclude my description of the scraping process and the data, I have included a table below summarizing a number of statistics that provide extra insight into the data.
 
-+-------+-----------------+-----------+-----------+----------+
-|       |          prices |   no_beds |     baths |     sqft |
-+=======+=================+===========+===========+==========+
-| count |    431          | 431       | 431       |   431    |
-+-------+-----------------+-----------+-----------+----------+
-| mean  | 810380          |   3.31555 |   2.86543 |  2234.37 |
-+-------+-----------------+-----------+-----------+----------+
-| std   |      1.2413e+06 |   1.11134 |   1.44849 |  1619.08 |
-+-------+-----------------+-----------+-----------+----------+
-| min   | 140000          |   1       |   1       |   378    |
-+-------+-----------------+-----------+-----------+----------+
-| 25%   | 349900          |   3       |   2       |  1302    |
-+-------+-----------------+-----------+-----------+----------+
-| 50%   | 479900          |   3       |   3       |  1861    |
-+-------+-----------------+-----------+-----------+----------+
-| 75%   | 725000          |   4       |   3       |  2630.5  |
-+-------+-----------------+-----------+-----------+----------+
-| max   |      1.29e+07   |   8       |  11       | 16722    |
-+-------+-----------------+-----------+-----------+----------+
+![Description](https://github.com/pasolano/appml/blob/main/data/project-1/describe.png?raw=true)
