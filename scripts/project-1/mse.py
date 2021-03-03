@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from sklearn.preprocessing import StandardScaler
+import seaborn as sns
+import matplotlib.pyplot as plt
+import dataframe_image as dfi
 
 
 def mse(xs, ys):
@@ -102,3 +105,29 @@ print("Under-predicted", under, "times")
 
 # get weights of model
 print(model.weights)
+
+# plot actual vs predicted
+compare = pd.DataFrame({"real" : df['prices'], "pred" : preds})
+g = sns.lmplot(
+    data=compare,
+    x="real", y="pred"
+    # height=5
+)
+g.set_axis_labels("Real Listed Prices", "Predicted Listed Prices")
+plt.show()
+
+# plot difference vs actual
+diff = preds - df['prices']
+compare = pd.DataFrame({"diff" : diff, "real" : df['prices']})
+g = sns.lmplot(
+  data=compare,
+  x="real", y="diff"
+)
+g.set_axis_labels("Real Listed Prices", "Diff. Between. Pred. and Real Price")
+plt.show()
+
+# chart top and bottom 5 guesses
+compare["predicted"] = preds
+compare = compare.sort_values("diff")
+dfi.export(compare[:5], '../../data/project-1/ripoff.png', table_conversion='matplotlib')
+dfi.export(compare[len(compare)-5:len(compare)], '../../data/project-1/deal.png', table_conversion='matplotlib')

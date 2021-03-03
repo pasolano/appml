@@ -8,25 +8,5 @@ filename = "../../data/project-1/austin.csv"
 
 df = pd.read_csv(filename)
 
-dfi.export(df.describe(), './describe.png', table_conversion='matplotlib')
-
-# print(df.describe().apply(lambda s: s.apply(lambda x: format(x, 'g'))))
-
-# prices = df['prices']
-# no_beds = df['no_beds']
-# baths = df['baths']
-# sqft = df['sqft']
-
-# def info(col_name, col):
-#     print(col_name.title() + ":")
-#     mean = np.mean(col)
-#     median = np.median(col)
-#     std = np.std(col)
-#     print("Mean: ",mean)
-#     print("Median: ",median)
-#     print("Standard Deviation: ",std,'\n')
-
-# info('prices',prices)
-# info('bedrooms',no_beds)
-# info('baths',baths)
-# info('square footage',sqft)
+# save dataframe describing features and labels to dataframe
+dfi.export(df.describe(), '../../data/project-1/describe.png', table_conversion='matplotlib')
