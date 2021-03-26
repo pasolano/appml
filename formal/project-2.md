@@ -162,6 +162,113 @@ AUC                0.585504
 
 ![ROC Wealth 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth5.png?raw=true)
 
+These ROC show that the model performed similarly for all of the wealth groups. While it's clear that the model is much better at predicting wealth group 1 correctly than wealth group 2 (since the difference in area is noticeably different), each ROC looks similar to the curve with an AUC smaller than it. So, while the model definitely predicts wealth group 1 better than wealth group 2, all of the groups are predicted with similar amounts of accuracy.
+
 ## Using the python script provided, train a gradient boosting model using decision trees with the tensorflow estimator. Provide evaluative metrics including a measure of accuracy and AUC. Produce the predicted probabilities plot as well as the ROC curve for each wealth outcome and interpret these results
+
+### Wealth Group 1
+
+Gradient boosting model
+```
+accuracy                  0.782685
+accuracy_baseline         0.785009
+auc                       0.647277
+auc_precision_recall      0.299709
+average_loss              0.491391
+label/mean                0.214991
+loss                      0.491391
+precision                 0.000000
+prediction/mean           0.233556
+recall                    0.000000
+global_step             100.000000
+```
+
+![Pred Prob 1](https://github.com/pasolano/appml/blob/main/data/project-2/images/pred_prob_1.png?raw=true)
+
+![ROC Wealth 1](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_1.png?raw=true)
+
+### Wealth Group 2
+
+Gradient boosting model
+```
+accuracy                  0.819291
+accuracy_baseline         0.822196
+auc                       0.606102
+auc_precision_recall      0.221756
+average_loss              0.455014
+label/mean                0.177804
+loss                      0.455014
+precision                 0.000000
+prediction/mean           0.182329
+recall                    0.000000
+global_step             100.000000
+```
+
+![Pred Prob 2](https://github.com/pasolano/appml/blob/main/data/project-2/images/pred_prob_2.png?raw=true)
+
+![ROC Wealth 2](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_2.png?raw=true)
+
+### Wealth Group 3
+
+Gradient boosting model
+```
+accuracy                  0.775131
+accuracy_baseline         0.780360
+auc                       0.552362
+auc_precision_recall      0.252759
+average_loss              0.528785
+label/mean                0.219640
+loss                      0.528785
+precision                 0.090909
+prediction/mean           0.213195
+recall                    0.002646
+global_step             100.000000
+```
+
+![Pred Prob 3](https://github.com/pasolano/appml/blob/main/data/project-2/images/pred_prob_3.png?raw=true)
+
+![ROC Wealth 3](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_3.png?raw=true)
+
+### Wealth Group 4
+
+Gradient boosting model
+```
+accuracy                  0.787914
+accuracy_baseline         0.780941
+auc                       0.596702
+auc_precision_recall      0.339208
+average_loss              0.511209
+label/mean                0.219059
+loss                      0.511209
+precision                 0.650000
+prediction/mean           0.217945
+recall                    0.068966
+global_step             100.000000
+```
+
+![Pred Prob 4](https://github.com/pasolano/appml/blob/main/data/project-2/images/pred_prob_4.png?raw=true)
+
+![ROC Wealth 4](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_4.png?raw=true)
+
+### Wealth Group 5
+
+Gradient boosting model
+```
+accuracy                  0.842533
+accuracy_baseline         0.837885
+auc                       0.629992
+auc_precision_recall      0.326081
+average_loss              0.415161
+label/mean                0.162115
+loss                      0.415161
+precision                 0.558824
+prediction/mean           0.150446
+recall                    0.136201
+global_step             100.000000
+```
+
+![Pred Prob 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/pred_prob_5.png?raw=true)
+
+![ROC Wealth 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_5.png?raw=true)
 
 ## Analyze all four models. According to the evaluation metrics, which model produced the best results? Were there any discrepancies among the five wealth outcomes from your DHS survey dataset?
