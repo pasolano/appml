@@ -22,6 +22,8 @@ from sklearn.model_selection import KFold
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_curve
+from matplotlib import pyplot as plt
 lin_reg = LinearRegression()
 
 pns = pd.read_csv('C:/Users/pablo/Documents/classes/appml/data/project-2/pns.csv')
@@ -126,13 +128,12 @@ print(pd.Series(result))
 pred_dicts = list(linear_est.predict(eval_input_fn))
 probs = pd.Series([pred['probabilities'][1] for pred in pred_dicts])
 
-probs.plot(kind='hist', bins=20, title='predicted probabilities')
-
-from sklearn.metrics import roc_curve
-from matplotlib import pyplot as plt
+# probs.plot(kind='hist', bins=20, title='predicted probabilities')
 
 fpr, tpr, _ = roc_curve(y_test, probs)
 plt.plot(fpr, tpr)
+x = np.linspace(0,1,1000)
+plt.plot(x,x,'--', c = 'grey')
 plt.title('ROC curve')
 plt.xlabel('false positive rate')
 plt.ylabel('true positive rate')

@@ -56,20 +56,20 @@ Above is a plot that shows the predictive importance of each feature in the rand
 
 Logistic regression model
 ```
-accuracy           0.778617
-average_loss       0.506625
-loss               0.506728
+accuracy           0.785590
+average_loss       0.500734
+loss               0.500711
 global_step     1620.000000
-AUC                0.657179
+AUC                0.642719
 ```
 
 Added the derived feature columns
 ```
-accuracy           0.779198
-average_loss       0.501730
-loss               0.501896
+accuracy           0.783266
+average_loss       0.496173
+loss               0.496035
 global_step     1620.000000
-AUC                0.657179
+AUC                0.642719
 ```
 
 ![ROC Wealth 1](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth1.png?raw=true)
@@ -78,20 +78,20 @@ AUC                0.657179
 
 Logistic regression model
 ```
-accuracy           0.806508
-average_loss       0.488187
-loss               0.488976
+accuracy           0.819872
+average_loss       0.470401
+loss               0.470048
 global_step     1620.000000
-AUC                0.560684
+AUC                0.558661
 ```
 
 Added the derived feature columns
 ```
-accuracy           0.806508
-average_loss       0.487599
-loss               0.488320
+accuracy           0.819872
+average_loss       0.469791
+loss               0.469299
 global_step     1620.000000
-AUC                0.560684
+AUC                0.558661
 ```
 
 ![ROC Wealth 2](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth2.png?raw=true)
@@ -100,20 +100,20 @@ AUC                0.560684
 
 Logistic regression model
 ```
-accuracy           0.787333
-average_loss       0.521808
-loss               0.521463
+accuracy           0.769901
+average_loss       0.536287
+loss               0.535911
 global_step     1620.000000
-AUC                0.524986
+AUC                0.569424
 ```
 
 Added the derived feature columns
 ```
-accuracy           0.785009
-average_loss       0.526242
-loss               0.525871
+accuracy           0.772807
+average_loss       0.534730
+loss               0.534103
 global_step     1620.000000
-AUC                0.524986
+AUC                0.569424
 ```
 
 ![ROC Wealth 3](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth3.png?raw=true)
@@ -122,20 +122,20 @@ AUC                0.524986
 
 Logistic regression model
 ```
-accuracy           0.776293
-average_loss       0.530631
-loss               0.530994
+accuracy           0.798954
+average_loss       0.489845
+loss               0.489800
 global_step     1620.000000
-AUC                0.586630
+AUC                0.612979
 ```
 
 Added the derived feature columns
 ```
-accuracy           0.779779
-average_loss       0.520418
-loss               0.520858
+accuracy           0.801278
+average_loss       0.484694
+loss               0.484545
 global_step     1620.000000
-AUC                0.586630
+AUC                0.612979
 ```
 
 ![ROC Wealth 4](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth4.png?raw=true)
@@ -144,20 +144,20 @@ AUC                0.586630
 
 Logistic regression model
 ```
-accuracy           0.851249
-average_loss       0.403903
-loss               0.403707
+accuracy           0.837304
+average_loss       0.446023
+loss               0.445456
 global_step     1620.000000
-AUC                0.619105
+AUC                0.585504
 ```
 
 Added the derived feature columns
 ```
-accuracy           0.849506
-average_loss       0.394308
-loss               0.394267
+accuracy           0.839047
+average_loss       0.442439
+loss               0.441955
 global_step     1620.000000
-AUC                0.619105
+AUC                0.585504
 ```
 
 ![ROC Wealth 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth5.png?raw=true)
