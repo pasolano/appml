@@ -52,17 +52,115 @@ Above is a plot that shows the predictive importance of each feature in the rand
 
 ## Using the python script provided, train a logistic regression model using the tensorflow estimator API and your DHS data, again with wealth as the target. Apply the linear classifier to the feature columns and determine the accuracy, AUC and other evaluative metrics towards each of the different wealth outcomes. Then continue with your linear classifier adding the derived feature columns you have selected in order to extend capturing combinations of correlations (instead of learning on single model weights for each outcome). Again produce your ROC curves and interpret the results
 
-Wealth Group 1
+### Wealth Group 1
 
+Logistic regression model
 ```
-accuracy           0.775712
-average_loss       0.505914
-loss               0.506887
+accuracy           0.778617
+average_loss       0.506625
+loss               0.506728
 global_step     1620.000000
-dtype: float64
+AUC                0.657179
 ```
 
+Added the derived feature columns
+```
+accuracy           0.779198
+average_loss       0.501730
+loss               0.501896
+global_step     1620.000000
+AUC                0.657179
+```
 
+![ROC Wealth 1](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth1.png?raw=true)
+
+### Wealth Group 2
+
+Logistic regression model
+```
+accuracy           0.806508
+average_loss       0.488187
+loss               0.488976
+global_step     1620.000000
+AUC                0.560684
+```
+
+Added the derived feature columns
+```
+accuracy           0.806508
+average_loss       0.487599
+loss               0.488320
+global_step     1620.000000
+AUC                0.560684
+```
+
+![ROC Wealth 2](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth2.png?raw=true)
+
+### Wealth Group 3
+
+Logistic regression model
+```
+accuracy           0.787333
+average_loss       0.521808
+loss               0.521463
+global_step     1620.000000
+AUC                0.524986
+```
+
+Added the derived feature columns
+```
+accuracy           0.785009
+average_loss       0.526242
+loss               0.525871
+global_step     1620.000000
+AUC                0.524986
+```
+
+![ROC Wealth 3](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth3.png?raw=true)
+
+### Wealth Group 4
+
+Logistic regression model
+```
+accuracy           0.776293
+average_loss       0.530631
+loss               0.530994
+global_step     1620.000000
+AUC                0.586630
+```
+
+Added the derived feature columns
+```
+accuracy           0.779779
+average_loss       0.520418
+loss               0.520858
+global_step     1620.000000
+AUC                0.586630
+```
+
+![ROC Wealth 4](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth4.png?raw=true)
+
+### Wealth Group 5
+
+Logistic regression model
+```
+accuracy           0.851249
+average_loss       0.403903
+loss               0.403707
+global_step     1620.000000
+AUC                0.619105
+```
+
+Added the derived feature columns
+```
+accuracy           0.849506
+average_loss       0.394308
+loss               0.394267
+global_step     1620.000000
+AUC                0.619105
+```
+
+![ROC Wealth 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_wealth5.png?raw=true)
 
 ## Using the python script provided, train a gradient boosting model using decision trees with the tensorflow estimator. Provide evaluative metrics including a measure of accuracy and AUC. Produce the predicted probabilities plot as well as the ROC curve for each wealth outcome and interpret these results
 

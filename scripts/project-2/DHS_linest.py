@@ -14,20 +14,27 @@ from six.moves import urllib
 import tensorflow as tf
 import seaborn as sns
 
+tf.get_logger().setLevel('WARNING')
+
 print(tf.__version__)
 
 from sklearn.model_selection import KFold
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score
 lin_reg = LinearRegression()
 
-pns = pd.read_csv('DHSlbr.csv')
+pns = pd.read_csv('C:/Users/pablo/Documents/classes/appml/data/project-2/pns.csv')
 
 pns['wealth'].value_counts().plot(kind='barh')
 plt.show()
 
 #set for wealth = 5 vs all others
-pns['wealth'] = np.where(pns['wealth'] == 1, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 1, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 2, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 3, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 4, 1, 0)
+pns['wealth'] = np.where(pns['wealth'] == 5, 1, 0)
 
 pns['wealth'].value_counts().plot(kind='barh')
 plt.show()
@@ -83,6 +90,12 @@ for feature_batch, label_batch in ds.take(1):
   print()
   print('A batch of Labels:', label_batch.numpy())
 
+# Some feature keys: ['size', 'gender', 'age', 'edu']
+
+# A batch of class: [1 0 0 2 0 0 0 2 2 1]
+
+# A batch of Labels: [0 0 0 0 0 1 0 0 1 0]
+
 size_column = feature_columns[3]
 tf.keras.layers.DenseFeatures([size_column])(feature_batch).numpy()
 
@@ -92,9 +105,12 @@ tf.keras.layers.DenseFeatures([tf.feature_column.indicator_column(edu_column)])(
 linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns, n_classes=10)
 linear_est.train(train_input_fn)
 result = linear_est.evaluate(eval_input_fn)
+pred_dicts = list(linear_est.predict(eval_input_fn))
+probs = pd.Series([pred['probabilities'][1] for pred in pred_dicts])
+result['AUC'] = roc_auc_score(y_test, probs)
 
 clear_output()
-print(result)
+print(pd.Series(result))
 
 age_x_gender = tf.feature_column.crossed_column(['size', 'edu'], hash_bucket_size=100)
 
@@ -102,9 +118,10 @@ derived_feature_columns = [age_x_gender]
 linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns+derived_feature_columns, n_classes=10)
 linear_est.train(train_input_fn)
 result = linear_est.evaluate(eval_input_fn)
+result['AUC'] = roc_auc_score(y_test, probs)
 
 clear_output()
-print(result)
+print(pd.Series(result))
 
 pred_dicts = list(linear_est.predict(eval_input_fn))
 probs = pd.Series([pred['probabilities'][1] for pred in pred_dicts])

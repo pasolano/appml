@@ -14,12 +14,18 @@ from sklearn.model_selection import KFold
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-pns = pd.read_csv('DHSlbr.csv')
+tf.get_logger().setLevel('WARNING')
+
+pns = pd.read_csv('C:/Users/pablo/Documents/classes/appml/data/project-2/pns.csv')
 
 pns['gender'] = np.where(pns['wealth'] == 1, "male", "female")
 
 #set for wealth = 5 vs all others
-pns['wealth'] = np.where(pns['wealth'] == 5, 1, 0)
+pns['wealth'] = np.where(pns['wealth'] == 1, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 2, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 3, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 4, 1, 0)
+# pns['wealth'] = np.where(pns['wealth'] == 5, 1, 0)
 
 pns['gender'].value_counts().plot(kind='barh')
 plt.show()
@@ -48,8 +54,15 @@ example = dict(X_train.head(1))
 example = dict(X_train.head())
 example = dict(X_train)
 class_fc = tf.feature_column.indicator_column(tf.feature_column.categorical_column_with_vocabulary_list('gender', ('male', 'female')))
-print('Feature value: "{}"'.format(example['gender'].iloc[0]))
+print('Feature value: "{}"'.format(example['gender'].iloc[0])) # Feature value: "female"
 print('One-hot encoded: ', tf.keras.layers.DenseFeatures([class_fc])(example).numpy())
+# One-hot encoded:  [[0. 1.]
+#  [0. 1.]
+#  [0. 1.]
+#  ...
+#  [0. 1.]
+#  [0. 1.]
+#  [1. 0.]]
 
 tf.keras.layers.DenseFeatures(feature_columns)(example).numpy()
 
@@ -78,6 +91,18 @@ linear_est.train(train_input_fn, max_steps=100)
 result = linear_est.evaluate(eval_input_fn)
 clear_output()
 print(pd.Series(result))
+# accuracy                  0.851830
+# accuracy_baseline         0.851830
+# auc                       0.715795
+# auc_precision_recall      0.359984
+# average_loss              0.371417
+# label/mean                0.148170
+# loss                      0.371417
+# precision                 0.000000
+# prediction/mean           0.166059
+# recall                    0.000000
+# global_step             100.000000
+# dtype: float64
 
 # Since data fits into memory, use entire dataset per layer. It will be faster.
 # Above one batch is defined as the entire dataset.
@@ -92,6 +117,18 @@ est.train(train_input_fn, max_steps=100)
 result = est.evaluate(eval_input_fn)
 clear_output()
 print(pd.Series(result))
+# accuracy                  0.861708
+# accuracy_baseline         0.851830
+# auc                       0.742146
+# auc_precision_recall      0.383084
+# average_loss              0.347584
+# label/mean                0.148170
+# loss                      0.347584
+# precision                 0.623188
+# prediction/mean           0.153494
+# recall                    0.168627
+# global_step             100.000000
+# dtype: float64
 
 # logistic regression
 pred_dicts = list(linear_est.predict(eval_input_fn))
