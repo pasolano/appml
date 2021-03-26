@@ -271,4 +271,28 @@ global_step             100.000000
 
 ![ROC Wealth 5](https://github.com/pasolano/appml/blob/main/data/project-2/images/roc_5.png?raw=true)
 
+The ROC - AUC for all of these wealth groups are approximately the same. As usual, the model predicts wealth outcomes 1 and 5 the best, but wealth outcome 4 is almost predicted just as accurately, and the others are not far off either. As for the predicted probabilities, the average value is the greatest in wealth group 1, steadily decreasing to being at its lowest for wealth group 5. This is because more people in Nepal belong to wealth group 1, then group 2, and so on.
+
 ## Analyze all four models. According to the evaluation metrics, which model produced the best results? Were there any discrepancies among the five wealth outcomes from your DHS survey dataset?
+
+The main discrepancy is that all of the models were able to predict the extreme wealth outcomes (1 and 5) more accurately than they could predict the middle outcomes. As for which model performed the best, the gradient boosted model and the logistic regression model performed very similarly
+
+```
+                                  Logistic Regression
+
+         | Group 1     | Group 2     | Group 3     | Group 4     | Group 5     |
+         | ----------- | ----------- | ----------- | ----------- | ----------- |
+Accuracy | 0.785590    | 0.819872    | 0.769901    | 0.798954    | 0.837304    |
+AUC      | 0.642719    | 0.558661    | 0.569424    | 0.612979    | 0.585504    |
+```
+
+```
+                                    Boosted Gradient
+
+         | Group 1     | Group 2     | Group 3     | Group 4     | Group 5     |
+         | ----------- | ----------- | ----------- | ----------- | ----------- |
+Accuracy | 0.782685    | 0.819291    | 0.775131    | 0.787914    | 0.842533    |
+AUC      | 0.647277    | 0.606102    | 0.552362    | 0.596702    | 0.629992    |
+```
+
+Logistic regression has better accuracy on groups 1, 2, and 4, whereas boosted gradient has a better accuracy on groups 3 and 5. Logistic regression has a larger AUC for groups 3 and 4, while boosted gradient has a greater AUC on groups 1, 2, and 5, but these are so close to each other that they could change just by retraining the models. I expected boosted gradient to be the best performing, but my models don't seem to lead to that result
