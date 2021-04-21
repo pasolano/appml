@@ -25,7 +25,6 @@ And here is a map of the actual population of Costa Rica
 
 Plot of the difference between the real and the predicted population of Costa Rica:
 ![Lin Reg Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-diff-sums.png)
-![Lin Reg Diff Sums 3D](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-diff-sums-3d.png)
 
 Plot of Mean Error:
 ![Lin Reg ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-me.png)
@@ -33,12 +32,10 @@ Plot of Mean Error:
 ### Random Forest Validation
 
 Plot of the difference between the real and the predicted population of Costa Rica
-![Random Forest Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rforest-diff-sums.png)
-![Random Forest Diff Sums 3D](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rforest-diff-sums-3d.png)
+![Random Forest Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-diff-sums.png)
 
 Plot of Mean Error:
 ![Random Forest ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-me.png)
-![Random Forest ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-me-3d.png)
 
 
 ## Write a report assessing the two approaches and which of the two models was more accurate. Be sure to account for spatial variation throughout your selected location and provide substantive explanations for why those variations occurred
