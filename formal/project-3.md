@@ -7,6 +7,7 @@ For this project, I chose Costa Rica as my country. I've been wanting to do a pr
 ![Costa Rica](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/costa-rica.png)
 
 And here is a map of the actual population of Costa Rica
+
 ![Costa Rica Pop](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/pop.png)
 
 ## Using two machine learning methods predict population values at 100 x 100 meter resolution throughout your selected country
@@ -24,17 +25,21 @@ And here is a map of the actual population of Costa Rica
 ### Linear Regression Validation
 
 Plot of the difference between the real and the predicted population of Costa Rica:
+
 ![Lin Reg Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-diff-sums.png)
 
 Plot of Mean Error:
+
 ![Lin Reg ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-me.png)
 
 ### Random Forest Validation
 
-Plot of the difference between the real and the predicted population of Costa Rica
+Plot of the difference between the real and the predicted population of Costa Rica:
+
 ![Random Forest Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-diff-sums.png)
 
 Plot of Mean Error:
+
 ![Random Forest ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-me.png)
 
 ## Write a report assessing the two approaches and which of the two models was more accurate. Be sure to account for spatial variation throughout your selected location and provide substantive explanations for why those variations occurred
