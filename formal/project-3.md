@@ -17,7 +17,7 @@ And here is a map of the actual population of Costa Rica
 
 ### Random Forest Predictions
 
-![Random Forest Pop Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rforest-pop-sums.png)
+![Random Forest Pop Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-pop-sums.png)
 
 ## Validate the two models using different methods presented in this class
 
