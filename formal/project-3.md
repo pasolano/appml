@@ -37,5 +37,4 @@ Plot of the difference between the real and the predicted population of Costa Ri
 Plot of Mean Error:
 ![Random Forest ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-me.png)
 
-
 ## Write a report assessing the two approaches and which of the two models was more accurate. Be sure to account for spatial variation throughout your selected location and provide substantive explanations for why those variations occurred
