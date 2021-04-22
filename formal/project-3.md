@@ -1,7 +1,5 @@
 # Project 3
 
-## UNDER CONSTRUCTION
-
 For this project, I chose Costa Rica as my country. I've been wanting to do a project on it for some time now, since my dad is from there. Below is a map.
 
 ![Costa Rica](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/costa-rica.png)
@@ -66,4 +64,4 @@ Plot of Mean Absolute Error:
 [1] 4671728
 ```
 
-As can be seen above, my linear regression model was slightly closer to estimating the total population of Costa Rica (being 5969 people away from the correct amount), while random forest was 8746 people away. Both of these estimates are very close to the total population, but linear regression got closer to the actual population. However, the sum of the differences between the actual population and the predicted populations in each area is much larger for the linear regression than for the random forest. For a final method of measuring the accuracy of each model, I plotted the mean error for both. The coloring for both of them is a little misleading, but they performed similarly to each other.
+As can be seen above, my linear regression model was slightly closer to estimating the total population of Costa Rica (being 5969 people away from the correct amount), while random forest was 8746 people away. Both of these estimates are very close to the total population, but linear regression got closer to the actual population. However, the sum of the differences between the actual population and the predicted populations in each area is much larger for the linear regression than for the random forest. For a final method of measuring the accuracy of each model, I plotted the mean absolute error for both. They performed similarly to each other to tell which one had a smaller error from these charts, but it looks like linear regression might have a color that is slightly higher on its scale than random forest's. Even though linear regression probably performed best during this project, both linear regression and random forest have the same problems when it comes to spatial variation. As can be seen from the "difference" plots, both models tend to have lots of negative error near areas with larger-than-average populations. This is probably because Costa Rica has such a stark contrast between areas with lots of people and areas with almost none -- the models can't accurately predict extreme cases with only a couple of factors, especially when predicting low numbers usually renders favorable results. The MAE plots also show that all the errors happen around populated areas, further confirming this theory.
