@@ -28,9 +28,9 @@ Plot of the difference between the real and the predicted population of Costa Ri
 
 ![Lin Reg Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-diff-sums.png)
 
-Plot of Mean Error:
+Plot of Mean Absolute Error:
 
-![Lin Reg ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-me.png)
+![Lin Reg MAE](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/lin-reg-mae.png)
 
 ### Random Forest Validation
 
@@ -38,9 +38,9 @@ Plot of the difference between the real and the predicted population of Costa Ri
 
 ![Random Forest Diff Sums](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-diff-sums.png)
 
-Plot of Mean Error:
+Plot of Mean Absolute Error:
 
-![Random Forest ME](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-me.png)
+![Random Forest MAE](https://raw.githubusercontent.com/pasolano/appml/main/data/project-3/images/rf-mae.png)
 
 ## Write a report assessing the two approaches and which of the two models was more accurate. Be sure to account for spatial variation throughout your selected location and provide substantive explanations for why those variations occurred
 
@@ -50,22 +50,20 @@ Plot of Mean Error:
 [1] 4520671
 
 # Linear regression predicted population
-> lin_reg_pop_sums <- cellStats(population_sums, sum)
-> lin_reg_pop_sums
+> cellStats(population_sums, sum)
 [1] 4514702
 
 # Linear regression error sum
-> lin_reg_diff_sums <- cellStats(diff_sums, sum)
-> lin_reg_diff_sums
-[1] -11821.27
+> cellStats(abs(diff_sums), sum)
+[1] 6324472
 
 # Random forest predicted population
-> rf_pop_sums <- cellStats(population_sums, sum)
-> rf_pop_sums
+> cellStats(population_sums, sum)
 [1] 4511925
 
 # Random forest error sum
-> rf_diff_sums <- cellStats(diff_sums, sum)
-> rf_diff_sums
-[1] -308.873
+> cellStats(abs(diff_sums), sum)
+[1] 4671728
 ```
+
+As can be seen above, my linear regression model was slightly closer to estimating the total population of Costa Rica (being 5969 people away from the correct amount), while random forest was 8746 people away. Both of these estimates are very close to the total population, but linear regression got closer to the actual population. However, the sum of the differences between the actual population and the predicted populations in each area is much larger for the linear regression than for the random forest. For a final method of measuring the accuracy of each model, I plotted the mean error for both. The coloring for both of them is a little misleading, but they performed similarly to each other.
