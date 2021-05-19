@@ -7,18 +7,18 @@ CAPTCHA is an essential component of internet security. Serving as a speed bump 
 This process involved a couple core steps. First, I had to collect a large amount of data to train my model. To do this, I used a dataset from Kaggle. This dataset was composed of ~10,000 images with the same dimensions. Each image had 4 characters, increasing the amount we could learn from each image. Each image was also labelled in the filename. After getting this data, I had to prepare it. This involved normalizing, splitting into training and testing sets, setting the images to be greyscale, and splitting the images to have the images be roughly of one character each. Once this was done, I made my model – a sequential model from Keras that flattened the images, had a dense layer with 256 nodes using relu, and a layer that used 32 nodes for softmax. I then compiled it with the Adam optimizer and the Sparse Categorical Cross entropy loss function. While this was similar to the model we made for the Fashion MNIST dataset earlier in the year, it required modification. The difference in the number of classes and the off-center images required me to change the number of epochs and the number of nodes in the dense relu layer. After this, I finished by designing the validation process, which involved identifying a single letter that was randomly chosen, and then expanding this process to entire CAPTCHA. We will look at the results below.
 
 This model ended up performing with 30%-70% accuracy, and occasionally getting stuck on 3% accuracy while training. While this is a large range, my model still produced results (and some garbage). Here are some failures:
-
+<br>
 ![Failure 1](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/failed-classification.PNG)
 ![Failure 2](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/failed-2.PNG)
 
 And here are some successes:
-
+<br>
 ![Success 1](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/correct.PNG)
 ![Success 2](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/correct-2.PNG)
 ![Success 3](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/correct-3.PNG)
 
 The 50-50 split makes sense when considering the wide range of the accuracy the model performed with, and can continue to be seen in its results. Here are examples of the model partially identifying CAPTCHAS:
-
+<br>
 ![Partial 1](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/full-text-semi.PNG)
 ![Partial 2](https://raw.githubusercontent.com/pasolano/appml/main/data/final-project/full-text-semi-2.PNG)
 
